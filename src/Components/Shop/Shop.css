@@ -1,0 +1,12 @@
+.shop{
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+.shop .carousel{
+    width: 1300px;
+    height: 400px;
+}
+.shop .carousel img{
+    height: 400px;
+}
