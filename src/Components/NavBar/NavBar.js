@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { AppBar, Toolbar, IconButton, Typography, Badge, makeStyles, Menu, MenuItem, Button, Hidden, Drawer, useTheme, Divider, List, ListItem, } from '@material-ui/core';
+import { AppBar, Toolbar, IconButton, Typography, Badge, makeStyles, Menu, MenuItem, Button, Hidden, Drawer, useTheme, Divider, List, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
@@ -40,7 +40,7 @@ const useStyles = makeStyles((theme) => ({
   },
   logo1: {
     width: '100px',
-    margin: '17px',
+    margin: '16.5px',
   },
   listItemText: {
     fontSize: '18px',
@@ -151,9 +151,9 @@ const NavBar = (props) => {
 
   const drawer = (
     <div>
-      <img className={classes.logo1} src={logo1} alt=""/>
+      <img className={classes.logo1} src={logo1} alt="" />
       <div className={classes.toolbar} />
-      <Divider />
+      <Divider style={{backgroundColor: "#498EC5"}} />
       <List className="drawer-btn">
         <a style={{ textDecoration: "none", color: "black" }} href="/about">
           <ListItem button>
@@ -170,10 +170,15 @@ const NavBar = (props) => {
   return (
     <div className="navBar">
       <div className={classes.grow}>
-        <AppBar style={{ backgroundColor: "white", color: "#498EC5" }} position="fixed">
+        <AppBar style={{
+          backgroundColor: "white",
+          color: "#498EC5",
+          borderBottom: "1px solid #498EC5",
+          boxShadow: "none"
+        }} position="fixed">
           <Toolbar>
             <IconButton
-              style={{outline:"none"}}
+              style={{ outline: "none" }}
               edge="start"
               className={classes.menuButton}
               color="inherit"
@@ -193,14 +198,14 @@ const NavBar = (props) => {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton style={{outline:"none"}} color="inherit">
+              <IconButton style={{ outline: "none" }} color="inherit">
                 <Badge badgeContent={4} color="secondary">
                   <FontAwesomeIcon icon={faShoppingCart} />
                 </Badge>
               </IconButton>
               <Button className="signIn">Sign In</Button>
               <IconButton
-                style={{outline:"none"}}
+                style={{ outline: "none" }}
                 edge="end"
                 aria-label="account of current user"
                 aria-controls={menuId}

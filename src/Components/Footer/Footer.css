@@ -1,0 +1,46 @@
+.footer{
+    background-color: white;
+    padding: 0 20px;
+    padding-top: 20px;
+    border-top: 1px solid #498EC5;
+}
+
+.footer > div:first-child{
+    display: flex;
+}
+
+.footer > div:last-child{
+    display: flex;
+    justify-content: center;
+    color: gray;
+    font-size: 16px;
+}
+
+.footer > div > *{
+    width: 20%;
+}
+
+.footer > div > * > p:first-child{
+    font-weight: 700;
+}
+
+.footer .icon{
+    font-size: 30px;
+    margin-right: 10px;
+}
+
+.footer .icon:first-child:hover{
+    color: #3b5998;
+}
+
+.footer .icon:nth-child(2):hover{
+    color: #ff1e00;
+}
+
+.footer .icon:nth-child(3):hover{
+    color: #00acee;
+}
+
+.footer .icon:last-child:hover{
+    color: #0e76a8;
+}

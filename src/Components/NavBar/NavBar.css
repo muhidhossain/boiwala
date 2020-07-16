@@ -2,6 +2,7 @@
     margin: 10px;
     height: 60px;
 }
+
 .navBar .search > form > input{
     width: 600px;
     margin-top: 10px;
@@ -14,6 +15,7 @@
     border-bottom-left-radius: 5px;
     font-size: 16px;
 }
+
 .navBar .search > form > *:last-child{
     height: 35px;
     background-color: #498EC5;
@@ -27,6 +29,7 @@
     margin-bottom: 5px;
     outline: none;
 }
+
 .navBar .signIn{
     height: 37px;
     background-color: #498EC5;
@@ -37,6 +40,7 @@
     outline: none;
     border: none;
 }
+
 .navBar .signIn:hover{
     background-color: #498EC5;
 }
