@@ -1,0 +1,30 @@
+.cart{
+    padding: 40px 0;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: #e4e4e4;
+}
+
+.cart .cartDetails{
+    background-color: white;
+    margin: 10px;
+    padding: 20px;
+    display: flex;
+    width: 400px;
+    justify-content: space-between;
+}
+
+.cart .cartDetails > div{
+    display: flex;
+}
+
+.cart .cartDetails img{
+    height: 80px;
+    margin-right: 20px;
+}
+
+.cart .cartDetails .cartText{
+    line-height: .6;
+    padding-top: 10px;
+}

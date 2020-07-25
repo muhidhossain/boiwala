@@ -1,0 +1,12 @@
+.recentlySoldProducts{
+    margin: 20px 110px;
+    padding: 10px 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px lightgray;
+}
+
+.recentlySoldProducts .cardHead{
+    display: flex;
+    justify-content: space-between;
+}

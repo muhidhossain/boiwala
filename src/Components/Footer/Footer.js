@@ -44,7 +44,7 @@ const Footer = () => {
                 </div>
             </div>
             <div>
-                <small>© {currentYear} Boiwala</small>
+                <small style={{ textAlign: "center" }}>© {currentYear} Boiwala</small>
             </div>
         </div>
     );

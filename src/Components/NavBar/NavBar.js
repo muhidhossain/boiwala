@@ -10,6 +10,9 @@ import logo1 from "../../images/logo/logo1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { useForm } from 'react-hook-form';
+import { useContext } from 'react';
+import { CartContext } from '../../App';
+import { Link } from 'react-router-dom';
 
 const drawerWidth = 240;
 
@@ -62,7 +65,8 @@ const NavBar = (props) => {
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
-  const [mobileOpen, setMobileOpen] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const [cart] = useContext(CartContext);
   const theme = useTheme();
   const { register, handleSubmit } = useForm();
 
@@ -153,7 +157,7 @@ const NavBar = (props) => {
     <div>
       <img className={classes.logo1} src={logo1} alt="" />
       <div className={classes.toolbar} />
-      <Divider style={{backgroundColor: "#498EC5"}} />
+      <Divider style={{ backgroundColor: "#498EC5" }} />
       <List className="drawer-btn">
         <a style={{ textDecoration: "none", color: "black" }} href="/about">
           <ListItem button>
@@ -198,11 +202,13 @@ const NavBar = (props) => {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton style={{ outline: "none" }} color="inherit">
-                <Badge badgeContent={4} color="secondary">
-                  <FontAwesomeIcon icon={faShoppingCart} />
-                </Badge>
-              </IconButton>
+              <Link style={{ color: "#498EC5"}} to="/cart">
+                <IconButton style={{ outline: "none" }} color="inherit">
+                  <Badge badgeContent={cart && cart.length} color="secondary">
+                    <FontAwesomeIcon icon={faShoppingCart} />
+                  </Badge>
+                </IconButton>
+              </Link>
               <Button className="signIn">Sign In</Button>
               <IconButton
                 style={{ outline: "none" }}

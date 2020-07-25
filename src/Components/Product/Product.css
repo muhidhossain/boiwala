@@ -1,0 +1,35 @@
+.product{
+    display: flex;
+}
+
+.product .productInfo{
+    width: 16.66%;
+    margin: 0 1px;
+}
+
+.product .productInfo img{
+    height: 230px;
+}
+
+.product .productInfo .cardBody > p:first-child{
+    line-height: 1;
+    margin-bottom: -1px;
+}
+
+.product .productInfo .cardBody > p:last-child{
+    padding-top: 10px;
+    margin-bottom: -5px;
+}
+
+.product .productInfo .addToCartBtn{
+    background-color: #498EC5;
+    padding: 5px 10px;
+    color: white;
+    outline: none;
+    font-size: 12px;
+    font-weight: 700;
+}
+
+.product .productInfo .addToCartBtn:hover{
+    background-color: #287ec4;
+}
