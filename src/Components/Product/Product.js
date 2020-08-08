@@ -55,7 +55,7 @@ const Product = () => {
             {
                 books.map((books) => (
                     <CardDeck className="productInfo" key={books._id}>
-                        <Card className="card">
+                        <Card onMouseOver={() => setId(books._id)} className="card">
                             <Link style={{ textDecoration: "none", color: "black" }} to={"/productDetails/" + id}>
                                 <Card.Img variant="top" src={books.image} />
                                 <Card.Body className="cardBody">
@@ -65,7 +65,7 @@ const Product = () => {
                                 </Card.Body>
                             </Link>
                             <Card.Footer>
-                                <Button onMouseOver={() => setId(books._id)} onClick={() => handleAddProduct()} className="addToCartBtn">Add to Cart</Button>
+                                <Button onClick={() => handleAddProduct()} className="addToCartBtn">Add to Cart</Button>
                             </Card.Footer>
                         </Card>
                     </CardDeck>

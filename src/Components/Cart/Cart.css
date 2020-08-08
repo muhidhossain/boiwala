@@ -28,3 +28,11 @@
     line-height: .6;
     padding-top: 10px;
 }
+
+.cart .emptyCart img{
+    height: 400px;
+}
+
+.cart .emptyCart h4{
+    padding-top: 40px;
+}
