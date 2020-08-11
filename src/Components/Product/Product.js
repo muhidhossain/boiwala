@@ -1,10 +1,10 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import './Product.css';
 import { CardDeck, Card, Modal } from 'react-bootstrap';
 import { Button } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 import { AllBooksContext, CartContext } from '../../App';
-import { addToDatabaseCart, getDatabaseCart } from '../LocalStorageManager/LocalStorageManager';
+import { addToDatabaseCart } from '../LocalStorageManager/LocalStorageManager';
 
 const Product = () => {
     const [id, setId] = useState(null);
@@ -13,18 +13,6 @@ const Product = () => {
 
     const allBooks = useContext(AllBooksContext);
     const books = allBooks.slice(0, 6);
-
-    useEffect(() => {
-        const savedCart = getDatabaseCart();
-        const productKeys = Object.keys(savedCart);
-        if (allBooks.length) {
-            const previousCart = productKeys.map(existingKey => {
-                const book = allBooks.find(book => book._id === existingKey);
-                return book;
-            })
-            setCart(previousCart);
-        }
-    }, [allBooks, show, setCart])
 
     if (show) {
         return (
@@ -39,15 +27,17 @@ const Product = () => {
     const handleAddProduct = () => {
         const book = books.find(book => book._id === id)
         const sameBook = cart.find(book => book._id === id);
+        const count = 1;
         let newCart;
         if (sameBook) {
             setShow(true)
+            newCart = [...cart];
         }
         else {
             newCart = [...cart, book];
+            addToDatabaseCart(id, count);
         }
         setCart(newCart);
-        addToDatabaseCart(id);
     }
 
     return (

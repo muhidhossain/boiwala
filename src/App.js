@@ -25,6 +25,7 @@ function App() {
     if (allBooks.length) {
       const previousCart = productKeys.map(existingKey => {
         const book = allBooks.find(book => book._id === existingKey);
+        book.quantity = savedCart[existingKey];
         return book;
       })
       setCart(previousCart);

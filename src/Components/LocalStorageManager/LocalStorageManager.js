@@ -22,9 +22,9 @@ const getDatabaseCart = () => {
     return JSON.parse(data);
 }
 
-const addToDatabaseCart = (id) => {
+const addToDatabaseCart = (id, count) => {
     const currentCart = getDatabaseCart();
-    currentCart[id] = 1;
+    currentCart[id] = count;
     localStorage.setItem(getDataKey(), JSON.stringify(currentCart));
 }
 
