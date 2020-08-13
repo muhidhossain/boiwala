@@ -2,17 +2,21 @@ import React, { createContext, useState, useEffect } from 'react';
 import './App.css';
 import NavBar from './Components/NavBar/NavBar';
 import Shop from './Components/Shop/Shop';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import SecondaryNav from './Components/SecondaryNav/SecondaryNav';
 import Footer from './Components/Footer/Footer';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import ProductDetails from './Components/ProductDetails/ProductDetails';
 import Cart from './Components/Cart/Cart';
+import Login from './Components/Login/Login';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import { getDatabaseCart } from './Components/LocalStorageManager/LocalStorageManager';
+import SignUp from './Components/SignUp/SignUp';
+import LogOut from './Components/LogOut/LogOut';
 
 export const AllBooksContext = createContext();
 export const CartContext = createContext();
 export const LoadingContext = createContext();
+export const AuthContext = createContext();
 
 function App() {
   const [cart, setCart] = useState([])
@@ -66,6 +70,15 @@ function App() {
                   <SecondaryNav></SecondaryNav>
                   <Cart></Cart>
                   <Footer></Footer>
+                </Route>
+                <Route path="/login">
+                  <Login></Login>
+                </Route>
+                <Route path="/signUp">
+                  <SignUp></SignUp>
+                </Route>
+                <Route path="/logOut">
+                  <LogOut></LogOut>
                 </Route>
               </Switch>
             </Router>

@@ -12,7 +12,7 @@ import OrderSummary from '../OrderSummary/OrderSummary';
 
 const Cart = () => {
     const [cart, setCart] = useState([])
-    const [reloader, setReloader] = useState(null);
+    const [reloader, setReloader] = useState(false);
     const [id, setId] = useState(null);
 
     const loading = useContext(LoadingContext)
@@ -46,7 +46,7 @@ const Cart = () => {
         if (count > 1) {
             count = count - 1;
         }
-        setReloader(count);
+        setReloader(true);
         addToDatabaseCart(id, count);
     }
 
@@ -56,7 +56,7 @@ const Cart = () => {
         if (count < 5) {
             count = count + 1;
         }
-        setReloader(count);
+        setReloader(true);
         addToDatabaseCart(id, count);
     }
 
