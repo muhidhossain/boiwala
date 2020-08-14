@@ -36,8 +36,8 @@ const Login = () => {
                 </form>
                 <br />
                 <Button className="loginBtn" onClick={auth.signInWithGoogle}>
-                    <span>Login With Google</span>
                     <img src={googleLogo} alt="" />
+                    <span>Login With Google</span>
                 </Button>
                 <br />
                 <br />

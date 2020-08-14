@@ -24,3 +24,18 @@
 .orderSummary p span{
     margin: auto;
 }
+
+.orderSummary .proceedBtn{
+    width: 260px;
+    background-color: #498EC5;
+    outline: none;
+    border: none;
+    padding: 5px;
+    color: white;
+    font-weight: 700;
+    margin-top: 40px;
+}
+
+.orderSummary .proceedBtn:hover{
+    background-color: #287ec4;
+}

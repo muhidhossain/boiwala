@@ -10,8 +10,6 @@ const SignUp = () => {
     const auth = Auth();
     const { register, handleSubmit, watch, errors, reset } = useForm();
 
-    console.log(auth.user);
-
     const onSubmit = () => {
         auth.createAccount();
         reset();

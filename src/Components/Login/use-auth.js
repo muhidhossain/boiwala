@@ -7,13 +7,11 @@ firebase.initializeApp(firebaseConfig);
 
 const getUser = user => {
     const { displayName, email, photoURL, emailVerified } = user;
-
     return { name: displayName, email, photo: photoURL, emailVerified };
 }
 
 const Auth = () => {
     const [user, setUser] = useState(null);
-    console.log(user);
 
     const provider = new firebase.auth.GoogleAuthProvider();
 

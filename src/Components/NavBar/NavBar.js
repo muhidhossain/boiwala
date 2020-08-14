@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Badge, makeStyles, Menu, MenuItem, Button, Hidden, Drawer, useTheme, Divider, List, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import MailIcon from '@material-ui/icons/Mail';
@@ -13,6 +13,8 @@ import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
 import { CartContext } from '../../App';
 import { Link } from 'react-router-dom';
+import Auth from '../Login/use-auth';
+import LogOut from '../LogOut/LogOut';
 
 const drawerWidth = 240;
 
@@ -61,19 +63,31 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 const NavBar = (props) => {
-  const { window } = props;
-  const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [emailVerified, setEmailVerified] = useState();
   const [cart] = useContext(CartContext);
-  const theme = useTheme();
+
+  console.log(emailVerified);
+
+  const { window } = props;
   const { register, handleSubmit } = useForm();
+
+  const theme = useTheme();
+  const classes = useStyles();
+  const auth = Auth();
 
   const onSubmit = data => console.log(data);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
+
+  useEffect(() => {
+    if (auth.user) {
+      setEmailVerified(auth.user.emailVerified);
+    }
+  }, [auth.user]);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -107,8 +121,9 @@ const NavBar = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <div onClick={handleMenuClose}>
+        <LogOut></LogOut>
+      </div>
     </Menu>
   );
 
@@ -202,25 +217,32 @@ const NavBar = (props) => {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <Link style={{ color: "#498EC5"}} to="/cart">
+              <Link style={{ color: "#498EC5" }} to="/cart">
                 <IconButton style={{ outline: "none" }} color="inherit">
                   <Badge badgeContent={cart && cart.length} color="secondary">
                     <FontAwesomeIcon icon={faShoppingCart} />
                   </Badge>
                 </IconButton>
               </Link>
-              <Button className="signIn">Sign In</Button>
-              <IconButton
-                style={{ outline: "none" }}
-                edge="end"
-                aria-label="account of current user"
-                aria-controls={menuId}
-                aria-haspopup="true"
-                onClick={handleProfileMenuOpen}
-                color="inherit"
-              >
-                <AccountCircle />
-              </IconButton>
+              <div>
+                {
+                  emailVerified ?
+                    <IconButton
+                      style={{ outline: "none" }}
+                      edge="end"
+                      aria-label="account of current user"
+                      aria-controls={menuId}
+                      aria-haspopup="true"
+                      onClick={handleProfileMenuOpen}
+                      color="inherit"
+                    >
+                      <AccountCircle />
+                    </IconButton> :
+                    <Link style={{ textDecoration: "none" }} to="/login">
+                      <Button className="signIn">Sign In</Button>
+                    </Link>
+                }
+              </div>
             </div>
             <div className={classes.sectionMobile}>
               <IconButton

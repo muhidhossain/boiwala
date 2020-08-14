@@ -1,8 +1,11 @@
 import React from 'react';
 import './OrderSummary.css';
+import { Button } from '@material-ui/core';
+import Auth from '../Login/use-auth';
 
 const OrderSummary = (props) => {
     const cart = props.cart;
+    const auth = Auth()
 
     let subtotal = 0;
     for (let i = 0; i < cart.length; i++) {
@@ -11,7 +14,7 @@ const OrderSummary = (props) => {
     };
 
     let shipping = 0;
-    if(subtotal) {
+    if (subtotal) {
         shipping = 50;
     }
 
@@ -35,6 +38,11 @@ const OrderSummary = (props) => {
             <div>
                 <p>Payable Total:</p><p>{total} TK.</p>
             </div>
+            {
+                auth.user ?
+                    <Button className="proceedBtn">GO to Shipping Page</Button> :
+                    <Button className="proceedBtn">Login To Proceed</Button>
+            }
         </div>
     );
 };

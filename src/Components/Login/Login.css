@@ -36,9 +36,13 @@
     font-weight: 700;
 }
 
+.login .loginDetails .loginBtn:hover{
+    background-color: #287ec4;
+}
+
 .login .loginDetails .loginBtn img{
     width: 25px;
-    margin-left: 10px;
+    margin-right: 10px;
     background-color: white;
     padding: 3px;
     border-radius: 15px;
