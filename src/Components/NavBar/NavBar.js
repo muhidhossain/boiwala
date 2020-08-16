@@ -14,7 +14,6 @@ import { useContext } from 'react';
 import { CartContext } from '../../App';
 import { Link } from 'react-router-dom';
 import Auth from '../Login/use-auth';
-import LogOut from '../LogOut/LogOut';
 
 const drawerWidth = 240;
 
@@ -69,8 +68,6 @@ const NavBar = (props) => {
   const [emailVerified, setEmailVerified] = useState();
   const [cart] = useContext(CartContext);
 
-  console.log(emailVerified);
-
   const { window } = props;
   const { register, handleSubmit } = useForm();
 
@@ -86,6 +83,9 @@ const NavBar = (props) => {
   useEffect(() => {
     if (auth.user) {
       setEmailVerified(auth.user.emailVerified);
+    }
+    else {
+      setEmailVerified(null);
     }
   }, [auth.user]);
 
@@ -122,7 +122,7 @@ const NavBar = (props) => {
       onClose={handleMenuClose}
     >
       <div onClick={handleMenuClose}>
-        <LogOut></LogOut>
+        <Button onClick={auth.signOut}>Log Out</Button>
       </div>
     </Menu>
   );

@@ -14,6 +14,7 @@ import SignUp from './Components/SignUp/SignUp';
 import Auth from './Components/Login/use-auth';
 import EmailVerification from './Components/VerifyEmail/VerifyEmail';
 import Loading from './Components/Loading/Loading';
+import Shipment from './Components/Shipment/Shipment';
 
 export const AllBooksContext = createContext();
 export const CartContext = createContext();
@@ -38,9 +39,6 @@ function App() {
     }
   }, [auth.user]);
 
-  console.log(emailVerified);
-  console.log(auth);
-
   useEffect(() => {
     const savedCart = getDatabaseCart();
     const productKeys = Object.keys(savedCart);
@@ -55,7 +53,7 @@ function App() {
   }, [allBooks, setCart])
 
   useEffect(() => {
-    fetch("http://localhost:4000/allBooks")
+    fetch("https://boiwala.herokuapp.com/allBooks")
       .then(res => res.json())
       .then(data => {
         const fetchedData = data.reverse()
@@ -144,6 +142,12 @@ function App() {
                   <NavBar></NavBar>
                   <SecondaryNav></SecondaryNav>
                   <Cart></Cart>
+                  <Footer></Footer>
+                </Route>
+                <Route path="/shipment">
+                  <NavBar></NavBar>
+                  <SecondaryNav></SecondaryNav>
+                  <Shipment></Shipment>
                   <Footer></Footer>
                 </Route>
               </Switch>

@@ -1,0 +1,36 @@
+.shipment{
+    padding: 40px 0;
+    background-color: #e4e4e4;
+    display: flex;
+    justify-content: center;
+}
+
+.shipment .shipmentDetails{
+    background-color: white;
+    padding: 20px;
+    width: auto;
+    margin: 10px;
+}
+
+.shipment .shipmentDetails h3{
+    margin-bottom: 20px;
+}
+
+.shipment .shipmentDetails input{
+    width: 350px;
+    padding: 8px 10px;
+    border: 1px solid #498EC5;
+    border-radius: 5px;
+    outline: none;
+    background-color: #e4e4e4;
+}
+
+.shipment .shipmentDetails .shipmentBtn{
+    width: 350px;
+    background-color: #498EC5;
+    outline: none;
+    border: none;
+    padding: 10px;
+    color: white;
+    font-weight: 700;
+}

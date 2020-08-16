@@ -15,10 +15,8 @@ const Cart = () => {
     const [reloader, setReloader] = useState(null);
     const [id, setId] = useState(null);
 
-    const loading = useContext(LoadingContext)
+    const loading = useContext(LoadingContext);
     const allBooks = useContext(AllBooksContext);
-
-    console.log(cart);
 
     useEffect(() => {
         const savedCart = getDatabaseCart();
@@ -145,7 +143,7 @@ const Cart = () => {
             </div>
             {
                 !loading &&
-                <OrderSummary cart={cart}></OrderSummary>
+                <OrderSummary isItCart={true} cart={cart}></OrderSummary>
             }
         </div>
     );

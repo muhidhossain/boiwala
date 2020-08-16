@@ -12,8 +12,6 @@ const Login = () => {
     const auth = Auth();
     const { register, handleSubmit, errors, reset } = useForm();
 
-    console.log(auth.user);
-
     const onSubmit = () => {
         auth.signInUser();
         reset();

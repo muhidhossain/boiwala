@@ -2,6 +2,7 @@ import React from 'react';
 import './OrderSummary.css';
 import { Button } from '@material-ui/core';
 import Auth from '../Login/use-auth';
+import { Link } from 'react-router-dom';
 
 const OrderSummary = (props) => {
     const cart = props.cart;
@@ -38,11 +39,18 @@ const OrderSummary = (props) => {
             <div>
                 <p>Payable Total:</p><p>{total} TK.</p>
             </div>
-            {
-                auth.user ?
-                    <Button className="proceedBtn">GO to Shipping Page</Button> :
-                    <Button className="proceedBtn">Login To Proceed</Button>
-            }
+            <div style={{display: props.isItCart & cart.length ? "block" : "none"}}>
+                {
+                    auth.user ?
+                        <Link to="/shipment" style={{ textDecoration: "none" }}>
+                            <Button className="proceedBtn">GO to Shipping Page</Button>
+                        </Link> :
+                        <Link to="/login" style={{ textDecoration: "none" }}>
+                            <Button className="proceedBtn">Login To Proceed</Button>
+                        </Link>
+
+                }
+            </div>
         </div>
     );
 };

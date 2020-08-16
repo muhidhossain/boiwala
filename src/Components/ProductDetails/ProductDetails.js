@@ -8,10 +8,8 @@ import { Button } from '@material-ui/core';
 const ProductDetails = () => {
     const allBooks = useContext(AllBooksContext)
     const { id } = useParams();
-    console.log(allBooks);
 
     const book = allBooks.filter(book => book._id === id)
-    console.log(book);
 
     return (
         <div className="productDetails">
