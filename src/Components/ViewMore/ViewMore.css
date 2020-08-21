@@ -1,0 +1,12 @@
+.viewMore{
+    background-color: #e4e4e4;
+    padding: 20px 120px;
+    display: flex;
+    justify-content: center;
+}
+
+.viewMore .viewMoreDetails{
+    background-color: white;
+    width: fit-content;
+    border-radius: 10px;
+}

@@ -5,6 +5,7 @@ import { Button } from '@material-ui/core';
 import { useForm } from 'react-hook-form';
 import logo from '../../images/logo/logo1.png';
 import FullHeight from "react-full-height";
+import { Link } from 'react-router-dom';
 
 const SignUp = () => {
     const auth = Auth();
@@ -18,7 +19,9 @@ const SignUp = () => {
     return (
         <FullHeight className="signUp">
             <div className="signUpDetails">
-                <img src={logo} alt="" />
+                <Link to="/">
+                    <img src={logo} alt="" />
+                </Link>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" name="name" placeholder="Full Name" onChange={auth.handleChange} ref={register({ required: true })} />
                     <br />
@@ -36,7 +39,12 @@ const SignUp = () => {
                     <br />
                     {errors.confirmPassword && <small>Password didn't match.</small>}
                     <br />
-                    <Button type="submit" className="signUpBtn" >Creat Account</Button>
+                    <Button type="submit" className="signUpBtn">Creat Account</Button>
+                    <br />
+                    <br/>
+                    <Link to="/login" style={{textDecoration: "none"}}>
+                        <Button className="signUpBtn">Already have an account</Button>
+                    </Link>
                 </form>
             </div>
         </FullHeight>

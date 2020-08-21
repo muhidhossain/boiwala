@@ -9,9 +9,8 @@ import './NavBar.css';
 import logo1 from "../../images/logo/logo1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
-import { useForm } from 'react-hook-form';
 import { useContext } from 'react';
-import { CartContext } from '../../App';
+import { CartContext, SearchContext } from '../../App';
 import { Link } from 'react-router-dom';
 import Auth from '../Login/use-auth';
 
@@ -67,15 +66,13 @@ const NavBar = (props) => {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [emailVerified, setEmailVerified] = useState();
   const [cart] = useContext(CartContext);
+  const [search, setSearch] = useContext(SearchContext);
 
   const { window } = props;
-  const { register, handleSubmit } = useForm();
 
   const theme = useTheme();
   const classes = useStyles();
   const auth = Auth();
-
-  const onSubmit = data => console.log(data);
 
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
@@ -122,7 +119,9 @@ const NavBar = (props) => {
       onClose={handleMenuClose}
     >
       <div onClick={handleMenuClose}>
-        <Button onClick={auth.signOut}>Log Out</Button>
+        <Link style={{textDecoration: "none"}} to="/">
+          <Button onClick={auth.signOut}>Log Out</Button>
+        </Link>
       </div>
     </Menu>
   );
@@ -207,13 +206,22 @@ const NavBar = (props) => {
               <MenuIcon style={{ fontSize: "35px" }} />
             </IconButton>
             <Typography className={classes.title} variant="h6" noWrap>
-              <img className="logo1" src={logo1} alt="" />
+              <Link to="/">
+                <img className="logo1" src={logo1} alt="" />
+              </Link>
             </Typography>
             <div className="search">
-              <form onSubmit={handleSubmit(onSubmit)}>
-                <input name="search" placeholder="Search" ref={register} />
-                <Button type="submit"><FontAwesomeIcon icon={faSearch} /></Button>
-              </form>
+              <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search" />
+              {
+                search ?
+                  <Link to={search && "/search=" + search} className="disabled">
+                    <Button type="submit"><FontAwesomeIcon icon={faSearch} /></Button>
+                  </Link> :
+                  <span>
+                    <Button><FontAwesomeIcon icon={faSearch} /></Button>
+                  </span>
+              }
+
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>

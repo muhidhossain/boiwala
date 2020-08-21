@@ -11,7 +11,7 @@ const OrderSummary = (props) => {
     let subtotal = 0;
     for (let i = 0; i < cart.length; i++) {
         const book = cart[i];
-        subtotal = subtotal + parseFloat(book.price) * book.quantity;
+        subtotal = subtotal + parseFloat(book.discountPrice) * book.quantity;
     };
 
     let shipping = 0;
@@ -39,7 +39,7 @@ const OrderSummary = (props) => {
             <div>
                 <p>Payable Total:</p><p>{total} TK.</p>
             </div>
-            <div style={{display: props.isItCart & cart.length ? "block" : "none"}}>
+            <div style={{display: props.isItCart && cart.length ? "block" : "none"}}>
                 {
                     auth.user ?
                         <Link to="/shipment" style={{ textDecoration: "none" }}>

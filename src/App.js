@@ -15,11 +15,15 @@ import Auth from './Components/Login/use-auth';
 import EmailVerification from './Components/VerifyEmail/VerifyEmail';
 import Loading from './Components/Loading/Loading';
 import Shipment from './Components/Shipment/Shipment';
+import ViewMore from './Components/ViewMore/ViewMore';
+import SearchRes from './Components/SearchRes/SearchRes';
 
 export const AllBooksContext = createContext();
 export const CartContext = createContext();
 export const LoadingContext = createContext();
 export const AuthContext = createContext();
+export const ViewMoreContext = createContext();
+export const SearchContext = createContext();
 
 function App() {
   const [cart, setCart] = useState([])
@@ -27,6 +31,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [loading1, setLoading1] = useState(true);
   const [emailVerified, setEmailVerified] = useState();
+  const [viewMore, setViewMore] = useState(null);
+  const [search, setSearch] = useState(null);
   const auth = Auth();
 
   useEffect(() => {
@@ -35,7 +41,7 @@ function App() {
       setLoading1(false);
     }
     else {
-      setTimeout(() => {setLoading1(false)}, 2000)
+      setTimeout(() => { setLoading1(false) }, 2000)
     }
   }, [auth.user]);
 
@@ -95,7 +101,7 @@ function App() {
           <EmailVerification></EmailVerification>
         </Route>
         <Route path="/signUp">
-        <EmailVerification></EmailVerification>
+          <EmailVerification></EmailVerification>
         </Route>
       </Switch>
     )
@@ -124,35 +130,51 @@ function App() {
       <LoadingContext.Provider value={loading}>
         <CartContext.Provider value={[cart, setCart]}>
           <AllBooksContext.Provider value={allBooks}>
-            <Router>
-              <Switch>
-                <Route exact path="/">
-                  <NavBar></NavBar>
-                  <SecondaryNav></SecondaryNav>
-                  <Shop></Shop>
-                  <Footer></Footer>
-                </Route>
-                <Route path="/productDetails/:id">
-                  <NavBar></NavBar>
-                  <SecondaryNav></SecondaryNav>
-                  <ProductDetails></ProductDetails>
-                  <Footer></Footer>
-                </Route>
-                <Route path="/cart">
-                  <NavBar></NavBar>
-                  <SecondaryNav></SecondaryNav>
-                  <Cart></Cart>
-                  <Footer></Footer>
-                </Route>
-                <Route path="/shipment">
-                  <NavBar></NavBar>
-                  <SecondaryNav></SecondaryNav>
-                  <Shipment></Shipment>
-                  <Footer></Footer>
-                </Route>
-              </Switch>
-              {routs}
-            </Router>
+            <ViewMoreContext.Provider value={[viewMore, setViewMore]}>
+              <SearchContext.Provider value={[search, setSearch]}>
+                <Router>
+                  <Switch>
+                    <Route exact path="/">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <Shop></Shop>
+                      <Footer></Footer>
+                    </Route>
+                    <Route path="/productDetails/:id">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <ProductDetails></ProductDetails>
+                      <Footer></Footer>
+                    </Route>
+                    <Route path="/cart">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <Cart></Cart>
+                      <Footer></Footer>
+                    </Route>
+                    <Route path="/more/:viewMore">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <ViewMore></ViewMore>
+                      <Footer></Footer>
+                    </Route>
+                    <Route path="/search=:search">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <SearchRes></SearchRes>
+                      <Footer></Footer>
+                    </Route>
+                    <Route path="/shipment">
+                      <NavBar></NavBar>
+                      <SecondaryNav></SecondaryNav>
+                      <Shipment></Shipment>
+                      <Footer></Footer>
+                    </Route>
+                  </Switch>
+                  {routs}
+                </Router>
+              </SearchContext.Provider>
+            </ViewMoreContext.Provider>
           </AllBooksContext.Provider>
         </CartContext.Provider>
       </LoadingContext.Provider>

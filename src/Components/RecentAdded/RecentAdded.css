@@ -10,3 +10,10 @@
     display: flex;
     justify-content: space-between;
 }
+
+.recentlySoldProducts .cardHead .viewMoreBtn{
+    font-size: 12px;
+    outline: none;
+    border: 1px solid #498EC5;
+    font-weight: 600;
+}

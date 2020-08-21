@@ -3,7 +3,7 @@
     height: 60px;
 }
 
-.navBar .search > form > input{
+.navBar .search > input{
     width: 600px;
     margin-top: 10px;
     margin-left: 40px;
@@ -16,7 +16,7 @@
     font-size: 16px;
 }
 
-.navBar .search > form > *:last-child{
+.navBar .search > * > *:last-child{
     height: 35px;
     background-color: #498EC5;
     border-top-left-radius: 0;

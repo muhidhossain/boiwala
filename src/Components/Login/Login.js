@@ -20,7 +20,9 @@ const Login = () => {
     return (
         <FullHeight className="login">
             <div className="loginDetails">
-                <img src={logo} alt="" />
+                <Link to="/">
+                    <img src={logo} alt="" />
+                </Link>
                 <form onSubmit={handleSubmit(onSubmit)}>
                     <input type="text" name="email" placeholder="Your Email" onChange={auth.handleChange} ref={register({ required: true, pattern: /(.+)@(.+){2,}\.(.+){2,}/ })} />
                     <br />

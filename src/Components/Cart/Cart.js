@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import './Cart.css';
 import { useContext } from 'react';
-import { LoadingContext, AllBooksContext } from '../../App';
+import { LoadingContext, AllBooksContext, CartContext } from '../../App';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faMinusSquare, faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { useState } from 'react';
@@ -11,7 +11,8 @@ import { Button, Spinner } from 'react-bootstrap';
 import OrderSummary from '../OrderSummary/OrderSummary';
 
 const Cart = () => {
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useContext(CartContext);
+    const [tempCart, setTempCart] = useState([]);
     const [reloader, setReloader] = useState(null);
     const [id, setId] = useState(null);
 
@@ -27,19 +28,20 @@ const Cart = () => {
                 book.quantity = savedCart[existingKey];
                 return book;
             })
-            setCart(previousCart);
+            setTempCart(previousCart);
         }
-    }, [allBooks, reloader])
+    }, [allBooks, reloader]);
 
 
     const handleRemove = () => {
-        const newCart = cart.filter(book => book._id !== id);
-        setCart(newCart);
+        const newCart = tempCart.filter(book => book._id !== id);
+        setTempCart(newCart);
+        setCart(newCart)
         removeFromDatabaseCart(id);
     }
 
     const handleMinusBtn = () => {
-        const book = cart.find(book => book._id === id);
+        const book = tempCart.find(book => book._id === id);
         let count = book.quantity;
         if (count > 1) {
             count = count - 1;
@@ -49,7 +51,7 @@ const Cart = () => {
     }
 
     const handlePlusBtn = () => {
-        const book = cart.find(bool => bool._id === id);
+        const book = tempCart.find(book => book._id === id);
         let count = book.quantity;
         if (count < 5) {
             count = count + 1;
@@ -84,15 +86,15 @@ const Cart = () => {
                         </div> :
                         <div>
                             {
-                                cart[0] ?
+                                tempCart[0] ?
                                     <div>
                                         {
-                                            cart.map((cartItem) => (
+                                            tempCart.map((cartItem) => (
                                                 <div key={cartItem._id} className="cartDetails">
                                                     <div>
                                                         <img src={cartItem.image} alt="" />
                                                         <div className="cartText">
-                                                            <p style={{ fontWeight: "600", color: "#498EC5" }}>{cartItem.title}</p>
+                                                            <p style={{ fontWeight: "700", color: "#498EC5" }}>{cartItem.title}</p>
                                                             <small>{cartItem.author}</small>
                                                             <br />
                                                             <br />
@@ -141,10 +143,12 @@ const Cart = () => {
                         </div>
                 }
             </div>
-            {
-                !loading &&
-                <OrderSummary isItCart={true} cart={cart}></OrderSummary>
-            }
+            <div style={{ display: tempCart.length ? "block" : "none" }}>
+                {
+                    !loading &&
+                    <OrderSummary isItCart={true} cart={tempCart}></OrderSummary>
+                }
+            </div>
         </div>
     );
 };
