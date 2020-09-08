@@ -35,6 +35,10 @@
     font-weight: 700;
 }
 
+.shipment .shipmentDetails .shipmentBtn:hover{
+    background-color: #287ec4;
+}
+
 .shipment .paymentInfo{
     background-color: white;
     padding: 10px 20px;
@@ -52,27 +56,105 @@
     border-radius: 10px;
 }
 
-.shipment .paymentInfo .paymentMethods .details .method{
+.shipment .paymentInfo .paymentMethods .details .method .methodDetails{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
 }
 
-.shipment .paymentInfo .paymentMethods .details .method > div{
+.shipment .paymentInfo .paymentMethods .details .method .methodDetails > div{
     padding: 10px;
     width: 280px;
 }
 
-.shipment .paymentInfo .paymentMethods .details .method p:first-child{
+.shipment .paymentInfo .paymentMethods .details .method .methodDetails p:first-child{
     font-weight: 600;
     color: #498EC5;
 }
 
-.shipment .paymentInfo .paymentMethods .details .method p:nth-child(2){
+.shipment .paymentInfo .paymentMethods .details .method .methodDetails p:nth-child(2){
     font-size: 14px;
     font-weight: 600;
 }
 
-.shipment .paymentInfo .paymentMethods .details .method p{
+.shipment .paymentInfo .paymentMethods .details .method .methodDetails p{
     line-height: 1;
+}
+
+.shipment .paymentInfo .paymentMethods .confirmBtn{
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px;
+}
+
+.shipment .paymentInfo .paymentMethods .confirmBtn > * > input{
+    border-radius: 5px;
+    margin-right: 10px;
+    outline: none;
+    border: 1px solid #498EC5;
+    padding: 10px;
+}
+
+.shipment .paymentInfo .paymentMethods .confirmBtn > * > *:last-child{
+    background-color: #498EC5;
+    color: white;
+    outline: none;
+    border: none;
+    padding: 10px;
+    font-weight: 700;
+    margin-bottom: 7px;
+}
+
+.shipment .paymentInfo .paymentMethods .confirmBtn > * > *:last-child:hover{
+    background-color: #287ec4;
+}
+
+.shipOrder{
+    background-color: #e4e4e4;
+    padding: 40px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.shipOrder .shipOrderDetails{
+    background-color: white;
+    padding: 20px;
+    text-align: center;
+}
+
+.shipOrder .shipOrderDetails h3{
+    color: #498EC5;
+}
+
+.shipOrder .shipOrderDetails > h4 > span{
+    color: #498EC5;
+}
+
+.shipOrder .shipOrderDetails img{
+    height: 350px;
+}
+
+.shipOrder .shipOrderDetails > div > *:first-child > *{
+    background-color: #498EC5;
+    color: white;
+    margin: 0 5px;
+    font-weight: 600;
+    outline: none;
+    border: 2px solid #498EC5;
+}
+
+.shipOrder .shipOrderDetails > div > *:last-child > *{
+    color: #498EC5;
+    margin: 0 5px;
+    font-weight: 600;
+    outline: none;
+    border: 2px solid #498EC5;
+}
+
+.shipOrder .shipOrderDetails > div > *:first-child > *:hover{
+    background-color: #287ec4;
+}
+
+.shipOrder .shipOrderDetails > div > *:last-child > *:hover{
+    background-color: #e4e4e4;
 }

@@ -100,12 +100,12 @@ const SecondaryNav = () => {
                         </li>
                     </ul>
                 </li>
-                <li className="dropdown">
+                {/* <li className="dropdown">
                     <Nav.Link><span>Menu</span></Nav.Link>
                 </li>
                 <li className="dropdown">
                     <Nav.Link><span>Menu</span></Nav.Link>
-                </li>
+                </li> */}
             </ul>
         </div>
     );

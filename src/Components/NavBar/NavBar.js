@@ -119,7 +119,7 @@ const NavBar = (props) => {
       onClose={handleMenuClose}
     >
       <div onClick={handleMenuClose}>
-        <Link style={{textDecoration: "none"}} to="/">
+        <Link style={{ textDecoration: "none" }} to="/">
           <Button onClick={auth.signOut}>Log Out</Button>
         </Link>
       </div>
@@ -173,11 +173,11 @@ const NavBar = (props) => {
       <div className={classes.toolbar} />
       <Divider style={{ backgroundColor: "#498EC5" }} />
       <List className="drawer-btn">
-        <a style={{ textDecoration: "none", color: "black" }} href="/about">
+        <Link to="/orders" style={{ textDecoration: "none", color: "#498EC5" }}>
           <ListItem button>
-            <p>ABOUT BOIWALA</p>
+            <p style={{margin: "5px 20px", fontWeight: "600"}}>Orders</p>
           </ListItem>
-        </a>
+        </Link>
       </List>
     </div>
   )

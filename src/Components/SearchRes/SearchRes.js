@@ -28,8 +28,6 @@ const SearchRes = () => {
         }
     }, [allBooks, search]);
 
-    console.log(books);
-
     return (
         <div className="searchRes">
             <div className="searchResDetails">
@@ -42,7 +40,6 @@ const SearchRes = () => {
                         <p style={{textAlign: "center", fontWeight: "600"}}>Nothing matched</p>
                     </div>
                 }
-                
             </div>
         </div>
     );

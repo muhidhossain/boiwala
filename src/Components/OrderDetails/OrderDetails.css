@@ -1,0 +1,65 @@
+.orderInfo{
+    background-color: #e4e4e4;
+    padding: 40px;
+    display: flex;
+    justify-content: center;
+}
+
+.orderInfo .orderDetailsInfo{
+    background-color: white;
+    padding: 20px;
+    width: 800px;
+}
+
+.orderInfo .orderDetailsInfo > div p{
+    line-height: 1;
+}
+
+.orderInfo .orderDetailsInfo > div > p:first-child{
+    color: #498EC5;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.orderInfo .orderDetailsInfo > div > p:nth-child(2){
+    color: gray;
+}
+
+.orderInfo .orderDetailsInfo > div > div:nth-child(3){
+    margin-bottom: 40px;
+}
+
+.orderInfo .orderDetailsInfo > div > div:nth-child(3) > p,
+.orderInfo .orderDetailsInfo .PricingAndDelivery > div > p{
+    font-weight: 700;
+    font-size: 18px;
+}
+
+.orderInfo .orderDetailsInfo .orderCart{
+    display: flex;
+    margin-bottom: 40px;
+}
+
+.orderInfo .orderDetailsInfo .orderCart .orderCartDetails{
+    padding: 5px 10px;
+}
+
+.orderInfo .orderDetailsInfo .orderCart .orderCartDetails img{
+    width: 100px;
+    height: 150px;
+}
+
+.orderInfo .orderDetailsInfo .PricingAndDelivery{
+    display: flex;
+    justify-content: space-between;
+}
+
+.orderInfo .orderDetailsInfo .PricingAndDelivery > div{
+    width: 50%;
+    margin: 0 20px;
+}
+
+.orderInfo .orderDetailsInfo .PricingAndDelivery > div:first-child > div{
+    display: flex;
+    justify-content: space-between;
+}

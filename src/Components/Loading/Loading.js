@@ -11,7 +11,8 @@ const Loading = () => {
                     style={{
                         fontWeight: "800",
                         padding: "10px 40px",
-                        backgroundColor: "#498EC5"
+                        backgroundColor: "#498EC5",
+                        border: "none"
                     }}
                     variant="primary" disabled>
                     <Spinner

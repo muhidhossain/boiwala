@@ -21,7 +21,7 @@ const OrderSummary = (props) => {
 
     let total = 0;
     if (subtotal) {
-        total = subtotal + 50;
+        total = subtotal + shipping;
     }
 
     return (

@@ -9,7 +9,6 @@ import { Link } from 'react-router-dom';
 const RecentAdded = () => {
     const allBooks = useContext(AllBooksContext);
     const [viewMore, setViewMOre] = useContext(ViewMoreContext);
-    console.log(viewMore);
 
     const books = allBooks.slice(0,6);
 

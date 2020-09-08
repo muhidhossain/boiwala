@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import './CarouselSec.css';
 import 'pure-react-carousel/dist/react-carousel.es.css';
-import carousel1 from '../../images/carousel/1406842.jpg';
-import carousel2 from '../../images/carousel/190-1900799_uhd-16-fantasy-art-wallpaper-4k.jpg';
-import carousel3 from '../../images/carousel/where-fairies-live-2K-wallpaper-middle-size.jpg';
+import carousel1 from '../../images/carousel/carousel-1.jpg';
+import carousel2 from '../../images/carousel/carousel-2.jpg';
+import carousel3 from '../../images/carousel/carousel-3.jpg';
 import { Carousel } from 'react-bootstrap';
 
 
