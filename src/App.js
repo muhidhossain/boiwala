@@ -113,6 +113,9 @@ function App() {
         <Route path="/orders">
           <Login></Login>
         </Route>
+        <Route path="/shipment">
+          <Login></Login>
+        </Route>
       </Switch>
     )
   }
@@ -123,6 +126,12 @@ function App() {
           <EmailVerification></EmailVerification>
         </Route>
         <Route path="/signUp">
+          <EmailVerification></EmailVerification>
+        </Route>
+        <Route path="/orders">
+          <EmailVerification></EmailVerification>
+        </Route>
+        <Route path="/shipment">
           <EmailVerification></EmailVerification>
         </Route>
       </Switch>
@@ -147,6 +156,12 @@ function App() {
           <NavBar></NavBar>
           <SecondaryNav></SecondaryNav>
           <Orders></Orders>
+          <Footer></Footer>
+        </Route>
+        <Route path="/shipment">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <Shipment></Shipment>
           <Footer></Footer>
         </Route>
       </Switch>
@@ -191,12 +206,6 @@ function App() {
                         <NavBar></NavBar>
                         <SecondaryNav></SecondaryNav>
                         <SearchRes></SearchRes>
-                        <Footer></Footer>
-                      </Route>
-                      <Route path="/shipment">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <Shipment></Shipment>
                         <Footer></Footer>
                       </Route>
                       <Route path="/orderDetails/:id">

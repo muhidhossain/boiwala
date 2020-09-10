@@ -33,9 +33,9 @@ const Auth = () => {
             setUser(null);
             return true;
         })
-        .catch(() => {
-            return false;
-        });
+            .catch(() => {
+                return false;
+            });
     }
 
     const is_valid_email = email => /(.+)@(.+){2,}\.(.+){2,}/.test(email);
@@ -71,12 +71,12 @@ const Auth = () => {
                     })
                     .then(() => {
                         firebase.auth().currentUser.sendEmailVerification()
-                        .then(res => {
-                            console.log("Email Sent");
-                        })
-                        .catch(err => {
-                            console.log(err.message);
-                        })
+                            .then(res => {
+                                console.log("Email Sent");
+                            })
+                            .catch(err => {
+                                console.log(err.message);
+                            })
                     })
             })
             .catch(err => {
@@ -87,21 +87,31 @@ const Auth = () => {
             });
     }
 
+    const sendEmailVerification = () => {
+        firebase.auth().currentUser.sendEmailVerification()
+        .then(res => {
+            console.log("Email Sent");
+        })
+        .catch(err => {
+            console.log(err.message);
+        })
+    }
+
     const signInUser = event => {
         if (user) {
             firebase.auth().signInWithEmailAndPassword(user.email, user.password)
-            .then(() => {
-                const createdUser = { ...user };
-                createdUser.isSignedIn = true;
-                createdUser.errors = "";
-                setUser(createdUser);
-            })
-            .catch(err => {
-                const createdUser = { ...user };
-                createdUser.isSignedIn = false;
-                createdUser.errors = err.message;
-                setUser(createdUser);
-            })
+                .then(() => {
+                    const createdUser = { ...user };
+                    createdUser.isSignedIn = true;
+                    createdUser.errors = "";
+                    setUser(createdUser);
+                })
+                .catch(err => {
+                    const createdUser = { ...user };
+                    createdUser.isSignedIn = false;
+                    createdUser.errors = err.message;
+                    setUser(createdUser);
+                })
         }
     }
 
@@ -122,7 +132,8 @@ const Auth = () => {
         createAccount,
         handleChange,
         signOut,
-        signInUser
+        signInUser,
+        sendEmailVerification
     }
 }
 

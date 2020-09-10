@@ -47,3 +47,7 @@
     color: #ff9900;
     font-weight: 600;
 }
+
+.orders .orderDetails > img{
+    height: 500px;
+}

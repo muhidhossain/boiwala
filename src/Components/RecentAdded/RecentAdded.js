@@ -15,7 +15,7 @@ const RecentAdded = () => {
     return (
         <div className="recentlySoldProducts">
             <div className="cardHead">
-                <h4>Recently Added</h4>
+                <h5>Recently Added</h5>
                 <Link style={{textDecoration: "none"}} to={"/more/" + viewMore} >
                     <Button onMouseOver={() => setViewMOre("recentlyAdded")} className="viewMoreBtn">View more</Button>
                 </Link>

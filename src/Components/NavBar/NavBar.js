@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { AppBar, Toolbar, IconButton, Typography, Badge, makeStyles, Menu, MenuItem, Button, Hidden, Drawer, useTheme, Divider, List, ListItem } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
-import MailIcon from '@material-ui/icons/Mail';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import AccountCircle from '@material-ui/icons/AccountCircle';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import './NavBar.css';
@@ -23,12 +21,12 @@ const useStyles = makeStyles((theme) => ({
   menuButton: {
     marginRight: theme.spacing(2),
   },
-  title: {
-    display: 'none',
-    [theme.breakpoints.up('sm')]: {
-      display: 'block',
-    },
-  },
+  // title: {
+  //   display: 'none',
+  //   [theme.breakpoints.up('sm')]: {
+  //     display: 'block',
+  //   },
+  // },
   sectionDesktop: {
     display: 'none',
     [theme.breakpoints.up('md')]: {
@@ -64,7 +62,6 @@ const NavBar = (props) => {
   const [anchorEl, setAnchorEl] = React.useState(null);
   const [mobileMoreAnchorEl, setMobileMoreAnchorEl] = React.useState(null);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [emailVerified, setEmailVerified] = useState();
   const [cart] = useContext(CartContext);
   const [search, setSearch] = useContext(SearchContext);
 
@@ -74,17 +71,22 @@ const NavBar = (props) => {
   const classes = useStyles();
   const auth = Auth();
 
+  // if (auth.user) {
+  //   const {name} = auth.user;
+  //   return name;
+  // }
+
   const isMenuOpen = Boolean(anchorEl);
   const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
 
-  useEffect(() => {
-    if (auth.user) {
-      setEmailVerified(auth.user.emailVerified);
-    }
-    else {
-      setEmailVerified(null);
-    }
-  }, [auth.user]);
+  // useEffect(() => {
+  //   if (auth.user) {
+  //     setEmailVerified(auth.user.emailVerified);
+  //   }
+  //   else {
+  //     setEmailVerified(null);
+  //   }
+  // }, [auth.user]);
 
   const handleProfileMenuOpen = (event) => {
     setAnchorEl(event.currentTarget);
@@ -118,9 +120,12 @@ const NavBar = (props) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <div onClick={handleMenuClose}>
+      <div style={{ padding: "0 10px" }} onClick={handleMenuClose}>
+        {
+          auth.user && <p style={{ fontWeight: "600" }}>{auth.user.name.slice(0, 8)}...</p>
+        }
         <Link style={{ textDecoration: "none" }} to="/">
-          <Button onClick={auth.signOut}>Log Out</Button>
+          <Button style={{ border: "2px solid #498EC5", color: "#498EC5" }} onClick={auth.signOut}>Log Out</Button>
         </Link>
       </div>
     </Menu>
@@ -137,33 +142,24 @@ const NavBar = (props) => {
       open={isMobileMenuOpen}
       onClose={handleMobileMenuClose}
     >
-      <MenuItem>
-        <IconButton aria-label="show 4 new mails" color="inherit">
-          <Badge badgeContent={4} color="secondary">
-            <MailIcon />
-          </Badge>
-        </IconButton>
-        <p>Messages</p>
-      </MenuItem>
-      <MenuItem>
-        <IconButton aria-label="show 11 new notifications" color="inherit">
-          <Badge badgeContent={11} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <p>Notifications</p>
-      </MenuItem>
-      <MenuItem onClick={handleProfileMenuOpen}>
-        <IconButton
-          aria-label="account of current user"
-          aria-controls="primary-search-account-menu"
-          aria-haspopup="true"
-          color="inherit"
-        >
-          <AccountCircle />
-        </IconButton>
-        <p>Profile</p>
-      </MenuItem>
+      {
+        auth.user ?
+          <MenuItem onClick={handleProfileMenuOpen}>
+            <IconButton
+              style={{ outline: "none" }}
+              aria-label="account of current user"
+              aria-controls="primary-search-account-menu"
+              aria-haspopup="true"
+              color="inherit"
+            >
+              <AccountCircle />
+            </IconButton>
+          </MenuItem> :
+          <Link style={{ textDecoration: "none" }} to="/login">
+            <Button className="signIn">Sign In</Button>
+          </Link>
+      }
+
     </Menu>
   );
 
@@ -175,13 +171,12 @@ const NavBar = (props) => {
       <List className="drawer-btn">
         <Link to="/orders" style={{ textDecoration: "none", color: "#498EC5" }}>
           <ListItem button>
-            <p style={{margin: "5px 20px", fontWeight: "600"}}>Orders</p>
+            <p style={{ margin: "5px 20px", fontWeight: "600" }}>Orders</p>
           </ListItem>
         </Link>
       </List>
     </div>
   )
-
 
   const container = window !== undefined ? () => window().document.body : undefined;
 
@@ -205,7 +200,7 @@ const NavBar = (props) => {
             >
               <MenuIcon style={{ fontSize: "35px" }} />
             </IconButton>
-            <Typography className={classes.title} variant="h6" noWrap>
+            <Typography variant="h6" noWrap>
               <Link to="/">
                 <img className="logo1" src={logo1} alt="" />
               </Link>
@@ -221,20 +216,19 @@ const NavBar = (props) => {
                     <Button><FontAwesomeIcon icon={faSearch} /></Button>
                   </span>
               }
-
             </div>
             <div className={classes.grow} />
+            <Link style={{ color: "#498EC5" }} to="/cart">
+              <IconButton style={{ outline: "none" }} color="inherit">
+                <Badge badgeContent={cart && cart.length} color="secondary">
+                  <FontAwesomeIcon icon={faShoppingCart} />
+                </Badge>
+              </IconButton>
+            </Link>
             <div className={classes.sectionDesktop}>
-              <Link style={{ color: "#498EC5" }} to="/cart">
-                <IconButton style={{ outline: "none" }} color="inherit">
-                  <Badge badgeContent={cart && cart.length} color="secondary">
-                    <FontAwesomeIcon icon={faShoppingCart} />
-                  </Badge>
-                </IconButton>
-              </Link>
               <div>
                 {
-                  emailVerified ?
+                  auth.user ?
                     <IconButton
                       style={{ outline: "none" }}
                       edge="end"
@@ -254,6 +248,7 @@ const NavBar = (props) => {
             </div>
             <div className={classes.sectionMobile}>
               <IconButton
+                style={{ outline: "none" }}
                 aria-label="show more"
                 aria-controls={mobileMenuId}
                 aria-haspopup="true"
@@ -264,6 +259,20 @@ const NavBar = (props) => {
               </IconButton>
             </div>
           </Toolbar>
+          <div className="secondarySearch">
+            <div>
+              <input type="search" onChange={(event) => setSearch(event.target.value)} placeholder="Search" />
+              {
+                search ?
+                  <Link to={search && "/search=" + search} className="disabled">
+                    <Button type="submit"><FontAwesomeIcon icon={faSearch} /></Button>
+                  </Link> :
+                  <span>
+                    <Button><FontAwesomeIcon icon={faSearch} /></Button>
+                  </span>
+              }
+            </div>
+          </div>
         </AppBar>
         {renderMobileMenu}
         {renderMenu}

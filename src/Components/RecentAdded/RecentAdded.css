@@ -17,3 +17,9 @@
     border: 1px solid #498EC5;
     font-weight: 600;
 }
+
+@media only screen and (max-width: 850px) {
+    .recentlySoldProducts{
+        margin: 20px;
+    }
+}

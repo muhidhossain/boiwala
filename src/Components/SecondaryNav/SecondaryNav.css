@@ -43,3 +43,15 @@
 .nav-pills .dropdown-menu{
     margin-top: 0;
 }
+
+@media only screen and (max-width: 750px) {
+    .secondaryNav{
+        margin-top: 100px;
+    }
+}
+
+@media only screen and (max-width: 441px) {
+    .secondaryNav{
+        margin-top: 95px;
+    }
+}

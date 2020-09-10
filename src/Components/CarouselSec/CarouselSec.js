@@ -1,46 +1,46 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './CarouselSec.css';
-import 'pure-react-carousel/dist/react-carousel.es.css';
 import carousel1 from '../../images/carousel/carousel-1.jpg';
 import carousel2 from '../../images/carousel/carousel-2.jpg';
 import carousel3 from '../../images/carousel/carousel-3.jpg';
-import { Carousel } from 'react-bootstrap';
-
-
-
+import { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+import { useEffect } from 'react';
 
 const CarouselSec = () => {
-    const [index, setIndex] = useState(0);
+    const [x, setX] = useState(0);
+    console.log(x);
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
+    let carouselArray = [
+        <img src={carousel1} alt="" />,
+        <img src={carousel2} alt="" />,
+        <img src={carousel3} alt="" />
+    ]
+
+    useEffect(() => {
+        setTimeout(() => {x === -100 * (carouselArray.length - 1) ? setX(0) : setX(x - 100)}, 5000);
+    }, [x, carouselArray.length]);
+
+    const goLeft = () => {
+        x === 0 ? setX(-100 * (carouselArray.length - 1)) : setX(x + 100);
+    };
+
+    const goRight = () => {
+        x === -100 * (carouselArray.length - 1) ? setX(0) : setX(x - 100);
     };
 
     return (
         <div className="carouselSec">
-            <Carousel activeIndex={index} onSelect={handleSelect}>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={carousel1}
-                        alt="First slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={carousel2}
-                        alt="Second slide"
-                    />
-                </Carousel.Item>
-                <Carousel.Item>
-                    <img
-                        className="d-block w-100"
-                        src={carousel3}
-                        alt="Third slide"
-                    />
-                </Carousel.Item>
-            </Carousel>
+            {
+                carouselArray.map((item, index) => (
+                    <div key={index} className="carouselItem" style={{ transform: `translateX(${x}%)` }}>
+                        {item}
+                    </div>
+                ))
+            }
+            <button id="goLeft" onClick={goLeft}><FontAwesomeIcon icon={faChevronLeft} /></button>
+            <button id="goRight" onClick={goRight}><FontAwesomeIcon icon={faChevronRight} /></button>
         </div>
     );
 };
