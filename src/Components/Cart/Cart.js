@@ -94,7 +94,7 @@ const Cart = () => {
                                                     <div>
                                                         <img src={cartItem.image} alt="" />
                                                         <div className="cartText">
-                                                            <p style={{ fontWeight: "700", color: "#498EC5" }}>{cartItem.title}</p>
+                                                            <p style={{ fontWeight: "700", color: "#498EC5" }}>{cartItem.title.slice(0, 10)}...</p>
                                                             <small>{cartItem.author}</small>
                                                             <br />
                                                             <br />

@@ -10,7 +10,6 @@ import { useEffect } from 'react';
 
 const CarouselSec = () => {
     const [x, setX] = useState(0);
-    console.log(x);
 
     let carouselArray = [
         <img src={carousel1} alt="" />,

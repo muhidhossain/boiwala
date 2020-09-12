@@ -39,3 +39,33 @@
 .orderSummary .proceedBtn:hover{
     background-color: #287ec4;
 }
+
+@media only screen and (max-width: 800px) {
+    .orderSummary{
+        width: 450px;
+    }
+
+    .orderSummary .proceedBtn{
+        width: 410px;
+    }
+}
+
+@media only screen and (max-width: 441px) {
+    .orderSummary{
+        width: 340px;
+    }
+
+    .orderSummary .proceedBtn{
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .orderSummary{
+        width: 310px;
+    }
+
+    .orderSummary .proceedBtn{
+        width: 270px;
+    }
+}

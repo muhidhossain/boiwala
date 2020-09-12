@@ -237,7 +237,8 @@ const Shipment = () => {
                                         <br />
                                         {errors.country && <small>Country is required</small>}
                                         <br />
-                                        <Button type="submit" className="shipmentBtn">Continue To Payment</Button>
+                                        <Button style={{display: cart[0] ? "block" : "none"}} type="submit" className="shipmentBtn">Continue To Payment</Button>
+                                        <Button style={{display: cart[0] ? "none" : "Block"}} className="shipmentBtn">Cart is Empty</Button>
                                     </form>
                                 </div> :
                                 <div className="paymentInfo">

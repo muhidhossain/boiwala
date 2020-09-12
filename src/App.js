@@ -78,7 +78,6 @@ function App() {
       });
   }, [orders.length]);
 
-
   let routs;
   if (loading1) {
     routs = (
@@ -116,6 +115,9 @@ function App() {
         <Route path="/shipment">
           <Login></Login>
         </Route>
+        <Route path="/orderDetails/:id">
+          <Login></Login>
+        </Route>
       </Switch>
     )
   }
@@ -132,6 +134,9 @@ function App() {
           <EmailVerification></EmailVerification>
         </Route>
         <Route path="/shipment">
+          <EmailVerification></EmailVerification>
+        </Route>
+        <Route path="/orderDetails/:id">
           <EmailVerification></EmailVerification>
         </Route>
       </Switch>
@@ -162,6 +167,12 @@ function App() {
           <NavBar></NavBar>
           <SecondaryNav></SecondaryNav>
           <Shipment></Shipment>
+          <Footer></Footer>
+        </Route>
+        <Route path="/orderDetails/:id">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <OrderDetails></OrderDetails>
           <Footer></Footer>
         </Route>
       </Switch>
@@ -206,12 +217,6 @@ function App() {
                         <NavBar></NavBar>
                         <SecondaryNav></SecondaryNav>
                         <SearchRes></SearchRes>
-                        <Footer></Footer>
-                      </Route>
-                      <Route path="/orderDetails/:id">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <OrderDetails></OrderDetails>
                         <Footer></Footer>
                       </Route>
                     </Switch>

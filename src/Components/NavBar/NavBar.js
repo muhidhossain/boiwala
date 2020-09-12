@@ -11,6 +11,7 @@ import { useContext } from 'react';
 import { CartContext, SearchContext } from '../../App';
 import { Link } from 'react-router-dom';
 import Auth from '../Login/use-auth';
+import LogOut from '../LogOut/LogOut';
 
 const drawerWidth = 240;
 
@@ -124,9 +125,7 @@ const NavBar = (props) => {
         {
           auth.user && <p style={{ fontWeight: "600" }}>{auth.user.name.slice(0, 8)}...</p>
         }
-        <Link style={{ textDecoration: "none" }} to="/">
-          <Button style={{ border: "2px solid #498EC5", color: "#498EC5" }} onClick={auth.signOut}>Log Out</Button>
-        </Link>
+        <LogOut></LogOut>
       </div>
     </Menu>
   );
@@ -146,7 +145,7 @@ const NavBar = (props) => {
         auth.user ?
           <MenuItem onClick={handleProfileMenuOpen}>
             <IconButton
-              style={{ outline: "none" }}
+              style={{ outline: "none", color: "#498EC5" }}
               aria-label="account of current user"
               aria-controls="primary-search-account-menu"
               aria-haspopup="true"

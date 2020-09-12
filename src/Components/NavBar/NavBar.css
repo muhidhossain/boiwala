@@ -81,7 +81,7 @@
     .navBar .secondarySearch > div > input{
         width: 400px;
         margin-left: 40px;
-        height: 30px;
+        height: 31px;
         padding: 0px 10px;
         outline: none;
         border: 1px solid #498EC5;
@@ -91,7 +91,7 @@
     }
 
     .navBar .secondarySearch > div > * > *:last-child{
-        height: 30px;
+        height: 31px;
         background-color: #498EC5;
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
@@ -115,6 +115,10 @@
 
     .navBar .secondarySearch > div > input{
         width: 230px;
+    }
+
+    .navBar .secondarySearch > div > * > *:last-child{
+        margin-bottom: 2.5px;
     }
 }
 
