@@ -33,6 +33,11 @@ const Login = () => {
                     {errors.password && <small>Enter a valid password with at least 8 character and a number</small>}
                     <br />
                     <Button className="loginBtn" type="submit">Log In</Button>
+                    <div className="loginError">
+                        {
+                            auth.user && auth.user.error && <small>{auth.user.error}</small>
+                        }
+                    </div>
                 </form>
                 <br />
                 <Button className="loginBtn" onClick={auth.signInWithGoogle}>

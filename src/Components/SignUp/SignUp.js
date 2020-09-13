@@ -41,8 +41,13 @@ const SignUp = () => {
                     <br />
                     <Button type="submit" className="signUpBtn">Creat Account</Button>
                     <br />
-                    <br/>
-                    <Link to="/login" style={{textDecoration: "none"}}>
+                    <div className="signUpError">
+                        {
+                            auth.user && auth.user.error && <small>{auth.user.error}</small>
+                        }
+                    </div>
+                    <br />
+                    <Link to="/login" style={{ textDecoration: "none" }}>
                         <Button className="signUpBtn">Already have an account</Button>
                     </Link>
                 </form>

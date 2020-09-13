@@ -50,11 +50,11 @@ const ProductDetails = () => {
                     <div key={book._id} className="productDetailsInfo">
                         <img src={book.image} alt="" />
                         <div>
-                            <h4 style={{ color: "#498EC5", fontSize: "28px", fontWeight: "700" }}>{book.title}</h4>
+                            <h4>{book.title}</h4>
                             <p>by {book.author}</p>
                             <p>Category: {book.category}</p>
-                            <h4 style={{textDecoration: "line-through", color: "gray"}}>Price: {book.price} TK.</h4>
-                            <h4 style={{fontWeight: "700"}}>Discount Price: {book.discountPrice} TK.</h4>
+                            <h4>Price: {book.price} TK.</h4>
+                            <h4>Discount Price: {book.discountPrice} TK.</h4>
                             <p style={{ color: "green" }}>Stock (Only {book.stock} copies left)</p>
                             <Button onClick={handleAddProduct} className="addToCartBtn">Add to Cart</Button>
                         </div>

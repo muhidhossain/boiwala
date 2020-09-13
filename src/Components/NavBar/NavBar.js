@@ -197,7 +197,7 @@ const NavBar = (props) => {
               aria-label="open drawer"
               onClick={handleDrawerToggle}
             >
-              <MenuIcon style={{ fontSize: "35px" }} />
+              <MenuIcon style={{ fontSize: "30px" }} />
             </IconButton>
             <Typography variant="h6" noWrap>
               <Link to="/">

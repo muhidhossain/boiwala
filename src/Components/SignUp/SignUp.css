@@ -8,7 +8,6 @@
 .signUp .signUpDetails{
     background-color: white;
     width: auto;
-    height: 580px;
     padding: 20px;
     border-radius: 10px;
 }
@@ -31,6 +30,10 @@
     color: red;
 }
 
+.signUp .signUpDetails .signUpError{
+    width: 350px;
+}
+
 .signUp .signUpDetails .signUpBtn{
     width: 350px;
     background-color: #498EC5;
@@ -43,4 +46,40 @@
 
 .signUp .signUpDetails .signUpBtn:hover{
     background-color: #287ec4;
+}
+
+@media only screen and (max-width: 441px) {
+    .signUp .signUpDetails img{
+        width: 300px;
+    }
+
+    .signUp .signUpDetails input{
+        width: 300px;
+    }
+
+    .signUp .signUpDetails .signUpError{
+        width: 300px;
+    }
+
+    .signUp .signUpDetails .signUpBtn{
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 350px) {
+    .signUp .signUpDetails img{
+        width: 260px;
+    }
+
+    .signUp .signUpDetails input{
+        width: 260px;
+    }
+
+    .signUp .signUpDetails .signUpError{
+        width: 260px;
+    }
+
+    .signUp .signUpDetails .signUpBtn{
+        width: 260px;
+    }
 }

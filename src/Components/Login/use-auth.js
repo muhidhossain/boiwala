@@ -109,7 +109,7 @@ const Auth = () => {
                 .catch(err => {
                     const createdUser = { ...user };
                     createdUser.isSignedIn = false;
-                    createdUser.errors = err.message;
+                    createdUser.error = err.message;
                     setUser(createdUser);
                 })
         }

@@ -46,11 +46,45 @@
     color: #0e76a8;
 }
 
+.footer .mobileFooter{
+    display: none;
+}
+
 @media only screen and (max-width: 1200px) {
     .footer > div:first-child{
         flex-wrap: wrap;
     }
     .footer > div > *{
         width: 220px;
+    }
+}
+
+@media only screen and (max-width: 441px) {
+    .footer > div:first-child{
+        display: none;
+    }
+
+    .footer .mobileFooter{
+        display: block;
+        font-size: 12px;
+    }
+
+    .footer .mobileFooter > div:last-child{
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        width: 100%;
+    }
+
+    .footer .mobileFooter > div:first-child{
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
+    .footer .mobileFooter > div:first-child  p{
+        font-weight: 700;
     }
 }
