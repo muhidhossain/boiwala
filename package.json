@@ -21,7 +21,7 @@
     "react-full-height": "^1.2.1",
     "react-hook-form": "^6.3.3",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "^3.4.2",
+    "react-scripts": "^3.4.3",
     "react-smart-slider": "^0.1.2",
     "react-stepper-horizontal": "^1.0.11"
   },

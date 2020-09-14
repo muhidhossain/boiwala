@@ -4,8 +4,8 @@ import carousel1 from '../../images/carousel/carousel-1.jpg';
 import carousel2 from '../../images/carousel/carousel-2.jpg';
 import carousel3 from '../../images/carousel/carousel-3.jpg';
 import { useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+// import { faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons';
 import { useEffect } from 'react';
 
 const CarouselSec = () => {
@@ -21,13 +21,13 @@ const CarouselSec = () => {
         setTimeout(() => {x === -100 * (carouselArray.length - 1) ? setX(0) : setX(x - 100)}, 5000);
     }, [x, carouselArray.length]);
 
-    const goLeft = () => {
-        x === 0 ? setX(-100 * (carouselArray.length - 1)) : setX(x + 100);
-    };
+    // const goLeft = () => {
+    //     x === 0 ? setX(-100 * (carouselArray.length - 1)) : setX(x + 100);
+    // };
 
-    const goRight = () => {
-        x === -100 * (carouselArray.length - 1) ? setX(0) : setX(x - 100);
-    };
+    // const goRight = () => {
+    //     x === -100 * (carouselArray.length - 1) ? setX(0) : setX(x - 100);
+    // };
 
     return (
         <div className="carouselSec">
@@ -38,8 +38,8 @@ const CarouselSec = () => {
                     </div>
                 ))
             }
-            <button id="goLeft" onClick={goLeft}><FontAwesomeIcon icon={faChevronLeft} /></button>
-            <button id="goRight" onClick={goRight}><FontAwesomeIcon icon={faChevronRight} /></button>
+            {/* <button id="goLeft" onClick={goLeft}><FontAwesomeIcon icon={faChevronLeft} /></button>
+            <button id="goRight" onClick={goRight}><FontAwesomeIcon icon={faChevronRight} /></button> */}
         </div>
     );
 };

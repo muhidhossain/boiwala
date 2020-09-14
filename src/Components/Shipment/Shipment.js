@@ -5,7 +5,7 @@ import Auth from '../Login/use-auth';
 import { Button, FormControl, RadioGroup, FormControlLabel, Radio } from '@material-ui/core';
 import OrderSummary from '../OrderSummary/OrderSummary';
 import { getDatabaseCart, clearLocalShoppingCart } from '../LocalStorageManager/LocalStorageManager';
-import { AllBooksContext } from '../../App';
+import { AllBooksContext, OrderContext } from '../../App';
 import { Link } from 'react-router-dom';
 import orderConfirmed from '../../images/orderConfirmed.jpg';
 import bKashLogo from '../../images/logo/bKash_logo.png'
@@ -30,8 +30,15 @@ const Shipment = () => {
     const auth = Auth();
 
     const allBooks = useContext(AllBooksContext);
+    const [orders, setOrders] = useContext(OrderContext);
 
     const { register, handleSubmit, errors, reset } = useForm();
+
+    const path = window.location;
+
+    useEffect(() => {
+        setOrder(null)
+    }, [path])
 
     const onSubmit = (shipInfo) => {
         setShipInfo(shipInfo);
@@ -95,6 +102,12 @@ const Shipment = () => {
             .then(order => {
                 setOrder(order);
                 clearLocalShoppingCart();
+                fetch("https://boiwala.herokuapp.com/orders")
+                    .then(res => res.json())
+                    .then(data => {
+                        const fetchedData = data.reverse()
+                        setOrders(fetchedData);
+                    });
             })
     }
 
@@ -237,14 +250,14 @@ const Shipment = () => {
                                         <br />
                                         {errors.country && <small>Country is required</small>}
                                         <br />
-                                        <Button style={{display: cart[0] ? "block" : "none"}} type="submit" className="shipmentBtn">Continue To Payment</Button>
-                                        <Button style={{display: cart[0] ? "none" : "Block"}} className="shipmentBtn">Cart is Empty</Button>
+                                        <Button style={{ display: cart[0] ? "block" : "none" }} type="submit" className="shipmentBtn">Continue To Payment</Button>
+                                        <Button style={{ display: cart[0] ? "none" : "Block" }} className="shipmentBtn">Cart is Empty</Button>
                                     </form>
                                 </div> :
                                 <div className="paymentInfo">
                                     <h3>Payment Method</h3>
                                     <div className="paymentMethods">
-                                        <div className="methods">
+                                        <div className="methods" style={{ display: "none" }}>
                                             <FormControl>
                                                 <RadioGroup value={value} onChange={handleRadioChange} style={{ display: "inline" }}>
                                                     <FormControlLabel
@@ -270,14 +283,14 @@ const Shipment = () => {
                                                 </RadioGroup>
                                             </FormControl>
                                         </div>
-                                        <div className="details">
+                                        <div className="details" style={{ display: "none" }}>
                                             {method}
                                         </div>
                                         <div className="confirmBtn">
                                             <form onSubmit={handleSubmit(handlePlaceOrder)}>
                                                 {errors.transID && <small>Transaction ID is required</small>}
                                                 <br />
-                                                <input type="text" name="transID" onChange={(event) => setTransID(event.target.value)} placeholder="Enter Transaction ID" ref={register({ required: true })} />
+                                                <input type="text" name="transID" defaultValue="For Testing" onChange={(event) => setTransID(event.target.value)} placeholder="Enter Transaction ID" ref={register({ required: true })} />
                                                 <Button type="submit">Confirm Order</Button>
                                             </form>
 

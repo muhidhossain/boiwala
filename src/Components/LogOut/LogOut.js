@@ -13,8 +13,8 @@ const LogOut = () => {
 
 
     return (
-        <div>
-            <Button style={{ border: "2px solid #498EC5", color: "#498EC5" }} onClick={handleClick}>Log Out</Button>
+        <div className="logOut">
+            <Button className="logOutBtn" onClick={handleClick}>Log Out</Button>
         </div>
     );
 };

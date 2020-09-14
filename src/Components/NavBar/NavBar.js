@@ -6,12 +6,13 @@ import MoreIcon from '@material-ui/icons/MoreVert';
 import './NavBar.css';
 import logo1 from "../../images/logo/logo1.png";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faShoppingCart, faSearch } from '@fortawesome/free-solid-svg-icons';
+import { faShoppingCart, faSearch, faTimes } from '@fortawesome/free-solid-svg-icons';
 import { useContext } from 'react';
 import { CartContext, SearchContext } from '../../App';
 import { Link } from 'react-router-dom';
 import Auth from '../Login/use-auth';
 import LogOut from '../LogOut/LogOut';
+import FullHeight from "react-full-height";
 
 const drawerWidth = 240;
 
@@ -162,19 +163,48 @@ const NavBar = (props) => {
     </Menu>
   );
 
+  // left drawer
   const drawer = (
-    <div>
-      <img className={classes.logo1} src={logo1} alt="" />
-      <div className={classes.toolbar} />
-      <Divider style={{ backgroundColor: "#498EC5" }} />
-      <List className="drawer-btn">
-        <Link to="/orders" style={{ textDecoration: "none", color: "#498EC5" }}>
-          <ListItem button>
-            <p style={{ margin: "5px 20px", fontWeight: "600" }}>Orders</p>
-          </ListItem>
-        </Link>
-      </List>
-    </div>
+    <FullHeight className="section-styles" style={{
+      display: "flex",
+      flexDirection: "column",
+      justifyContent: "space-between",
+      alignItems: "center",
+      marginBottom: "20px",
+    }}>
+      <div style={{ width: "240px" }}>
+        <div style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+        }}>
+          <Link onClick={handleDrawerToggle} to="/">
+            <img className={classes.logo1} src={logo1} alt="" />
+          </Link>
+          <FontAwesomeIcon
+            style={{
+              marginRight: "10px",
+              color: "#498EC5",
+              cursor: "pointer",
+              fontSize: "20px"
+            }}
+            onClick={handleDrawerToggle}
+            icon={faTimes} />
+        </div>
+        <div className={classes.toolbar} />
+        <Divider style={{ backgroundColor: "#498EC5" }} />
+        <List className="drawer-btn">
+          <Link to="/orders" style={{ textDecoration: "none", color: "#498EC5" }}>
+            <ListItem onClick={handleDrawerToggle} button>
+              <p style={{ margin: "5px 20px", fontWeight: "600" }}>Orders</p>
+            </ListItem>
+          </Link>
+        </List>
+      </div>
+      {
+        auth.user && <LogOut></LogOut>
+      }
+    </FullHeight>
   )
 
   const container = window !== undefined ? () => window().document.body : undefined;

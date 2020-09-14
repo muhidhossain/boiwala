@@ -9,6 +9,7 @@ import { removeFromDatabaseCart, addToDatabaseCart, getDatabaseCart } from '../L
 import emptyCart from '../../images/cart/empty-cart.png'
 import { Button, Spinner } from 'react-bootstrap';
 import OrderSummary from '../OrderSummary/OrderSummary';
+import { Link } from 'react-router-dom';
 
 const Cart = () => {
     const [cart, setCart] = useContext(CartContext);
@@ -136,7 +137,7 @@ const Cart = () => {
                                     <div className="emptyCart">
                                         <div>
                                             <img src={emptyCart} alt="" />
-                                            <h4>Your Cart is Empty. <a href="/">Continue Shopping</a></h4>
+                                            <h4>Your Cart is Empty. <Link to="/">Continue Shopping</Link></h4>
                                         </div>
                                     </div>
                             }

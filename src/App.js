@@ -31,7 +31,7 @@ export const OrderContext = createContext();
 function App() {
   const [cart, setCart] = useState([])
   const [allBooks, setAllBooks] = useState([]);
-  const [orders, setOrders] = useState([]);
+  const [orders, setOrders] = useState();
   const [loading, setLoading] = useState(true);
   const [loading1, setLoading1] = useState(true);
   const [emailVerified, setEmailVerified] = useState();
@@ -60,7 +60,7 @@ function App() {
       })
       setCart(previousCart);
     }
-  }, [allBooks, setCart])
+  }, [allBooks, setCart, orders])
 
   useEffect(() => {
     fetch("https://boiwala.herokuapp.com/allBooks")
@@ -76,7 +76,7 @@ function App() {
             setLoading(false);
           });
       });
-  }, [orders.length]);
+  }, []);
 
   let routs;
   if (loading1) {
@@ -95,6 +95,21 @@ function App() {
     routs = (
       <Switch>
         <Route path="/orders">
+          <Loading></Loading>
+        </Route>
+        <Route path="/search=:search">
+          <Loading></Loading>
+        </Route>
+        <Route path="/more/:viewMore">
+          <Loading></Loading>
+        </Route>
+        <Route path="/productDetails/:id">
+          <Loading></Loading>
+        </Route>
+        <Route exact path="/">
+          <Loading></Loading>
+        </Route>
+        <Route path="/orderDetails/:id">
           <Loading></Loading>
         </Route>
       </Switch>
@@ -118,6 +133,30 @@ function App() {
         <Route path="/orderDetails/:id">
           <Login></Login>
         </Route>
+        <Route path="/search=:search">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <SearchRes></SearchRes>
+          <Footer></Footer>
+        </Route>
+        <Route path="/more/:viewMore">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ViewMore></ViewMore>
+          <Footer></Footer>
+        </Route>
+        <Route path="/productDetails/:id">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ProductDetails></ProductDetails>
+          <Footer></Footer>
+        </Route>
+        <Route exact path="/">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <Shop></Shop>
+          <Footer></Footer>
+        </Route>
       </Switch>
     )
   }
@@ -138,6 +177,30 @@ function App() {
         </Route>
         <Route path="/orderDetails/:id">
           <EmailVerification></EmailVerification>
+        </Route>
+        <Route path="/search=:search">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <SearchRes></SearchRes>
+          <Footer></Footer>
+        </Route>
+        <Route path="/more/:viewMore">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ViewMore></ViewMore>
+          <Footer></Footer>
+        </Route>
+        <Route path="/productDetails/:id">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ProductDetails></ProductDetails>
+          <Footer></Footer>
+        </Route>
+        <Route exact path="/">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <Shop></Shop>
+          <Footer></Footer>
         </Route>
       </Switch>
     )
@@ -175,6 +238,30 @@ function App() {
           <OrderDetails></OrderDetails>
           <Footer></Footer>
         </Route>
+        <Route path="/search=:search">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <SearchRes></SearchRes>
+          <Footer></Footer>
+        </Route>
+        <Route path="/more/:viewMore">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ViewMore></ViewMore>
+          <Footer></Footer>
+        </Route>
+        <Route path="/productDetails/:id">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <ProductDetails></ProductDetails>
+          <Footer></Footer>
+        </Route>
+        <Route exact path="/">
+          <NavBar></NavBar>
+          <SecondaryNav></SecondaryNav>
+          <Shop></Shop>
+          <Footer></Footer>
+        </Route>
       </Switch>
     )
   }
@@ -189,34 +276,10 @@ function App() {
                 <SearchContext.Provider value={[search, setSearch]}>
                   <Router>
                     <Switch>
-                      <Route exact path="/">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <Shop></Shop>
-                        <Footer></Footer>
-                      </Route>
-                      <Route path="/productDetails/:id">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <ProductDetails></ProductDetails>
-                        <Footer></Footer>
-                      </Route>
                       <Route path="/cart">
                         <NavBar></NavBar>
                         <SecondaryNav></SecondaryNav>
                         <Cart></Cart>
-                        <Footer></Footer>
-                      </Route>
-                      <Route path="/more/:viewMore">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <ViewMore></ViewMore>
-                        <Footer></Footer>
-                      </Route>
-                      <Route path="/search=:search">
-                        <NavBar></NavBar>
-                        <SecondaryNav></SecondaryNav>
-                        <SearchRes></SearchRes>
                         <Footer></Footer>
                       </Route>
                     </Switch>

@@ -14,7 +14,7 @@
     transition: .5s;
 }
 
-.carouselSec #goLeft{
+/* .carouselSec #goLeft{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -54,7 +54,7 @@
     background: gray;
     opacity: .2;
     color: black;
-}
+} */
 
 @media only screen and (max-width: 1350px) {
     .carouselSec{
@@ -118,13 +118,13 @@
         margin-top: 125.5px;
     } 
 
-    .carouselSec #goLeft{
+    /* .carouselSec #goLeft{
         font-size: 15px;
     }
 
     .carouselSec #goRight{
         font-size: 15px;
-    }
+    } */
 }
 
 @media only screen and (max-width: 441px) {
