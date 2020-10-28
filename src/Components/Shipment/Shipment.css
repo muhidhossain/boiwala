@@ -86,14 +86,20 @@
     padding: 10px;
 }
 
+.shipment .paymentInfo .paymentMethods .confirmBtn small{
+    color: red;
+}
+
 .shipment .paymentInfo .paymentMethods .confirmBtn > * > input{
     border-radius: 5px;
     margin-right: 10px;
     outline: none;
     border: 1px solid #498EC5;
     padding: 10px;
+    height: 50px;
 }
 
+.shipment .paymentInfo .paymentMethods .confirmBtn > * > .confirmOrderBtn,
 .shipment .paymentInfo .paymentMethods .confirmBtn > * > *:last-child{
     background-color: #498EC5;
     color: white;
@@ -102,8 +108,10 @@
     padding: 10px;
     font-weight: 700;
     margin-bottom: 7px;
+    width: 150px;
 }
 
+.shipment .paymentInfo .paymentMethods .confirmBtn > * > .confirmOrderBtn:hover,
 .shipment .paymentInfo .paymentMethods .confirmBtn > * > *:last-child:hover{
     background-color: #287ec4;
 }

@@ -8,17 +8,17 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 
 const ViewMore = () => {
-const [books, setBooks] = useState();
+    const [books, setBooks] = useState();
 
     const allBooks = useContext(AllBooksContext);
     const { viewMore } = useParams();
 
     useEffect(() => {
-        if (allBooks && viewMore === "recentlyAdded"){
+        if (allBooks && viewMore === "recentlyAdded") {
             setBooks(allBooks);
         }
     }, [allBooks, viewMore])
-    
+
     return (
         <div className="viewMore">
             <div className="viewMoreDetails">

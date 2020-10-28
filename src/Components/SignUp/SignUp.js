@@ -39,7 +39,7 @@ const SignUp = () => {
                     <br />
                     {errors.confirmPassword && <small>Password didn't match.</small>}
                     <br />
-                    <Button type="submit" className="signUpBtn">Creat Account</Button>
+                    <Button type="submit" className="signUpBtn">Create Account</Button>
                     <br />
                     <div className="signUpError">
                         {

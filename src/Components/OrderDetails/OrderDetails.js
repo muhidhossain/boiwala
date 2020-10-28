@@ -17,7 +17,7 @@ const OrderDetails = () => {
 
     const [orders] = useContext(OrderContext);
 
-    const orderEmail = orders.filter(order => auth.user && order.shipment.email === auth.user.email)
+    const orderEmail = orders.filter(order => auth.user && order.email === auth.user.email)
 
     const order = orderEmail.filter(order => order._id === id);
 

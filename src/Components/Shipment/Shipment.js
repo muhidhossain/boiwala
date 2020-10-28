@@ -27,6 +27,7 @@ const Shipment = () => {
     const [bKashApp, setBKashApp] = useState("withoutQR");
     const [transId, setTransID] = useState(null);
     const [order, setOrder] = useState(null);
+    const [loading, setLoading] = useState(false);
     const auth = Auth();
 
     const allBooks = useContext(AllBooksContext);
@@ -91,6 +92,7 @@ const Shipment = () => {
             payableTotal: total,
             status: "Pending"
         };
+        setLoading(true);
         fetch("https://boiwala.herokuapp.com/placeOrder", {
             method: "post",
             headers: {
@@ -101,6 +103,7 @@ const Shipment = () => {
             .then(res => res.json())
             .then(order => {
                 setOrder(order);
+                setLoading(false);
                 clearLocalShoppingCart();
                 fetch("https://boiwala.herokuapp.com/orders")
                     .then(res => res.json())
@@ -291,7 +294,8 @@ const Shipment = () => {
                                                 {errors.transID && <small>Transaction ID is required</small>}
                                                 <br />
                                                 <input type="text" name="transID" defaultValue="For Testing" onChange={(event) => setTransID(event.target.value)} placeholder="Enter Transaction ID" ref={register({ required: true })} />
-                                                <Button type="submit">Confirm Order</Button>
+                                                <Button style={{display: loading? "none" : "inline"}} className="confirmOrderBtn" type="submit">Confirm Order</Button>
+                                                <Button style={{display: loading? "inline" : "none"}}>Loading...</Button>
                                             </form>
 
                                         </div>

@@ -13,8 +13,7 @@ const Orders = () => {
 
     const [orders] = useContext(OrderContext);
 
-    const order = orders.filter(order => auth.user && order.shipment.email === auth.user.email);
-
+    const order = orders.filter(order => auth.user && order.email === auth.user.email);
     return (
         <div className="orders">
             {
